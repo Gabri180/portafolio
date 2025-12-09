@@ -1,0 +1,82 @@
+---
+const technologies = [
+  { name: 'Python', icon: '🐍', level: 90 },
+  { name: 'Java', icon: '☕', level: 85 },
+  { name: 'JavaScript', icon: '⚡', level: 95 },
+  { name: 'HTML/CSS', icon: '🎨', level: 95 },
+  { name: 'Astro', icon: '🚀', level: 80 },
+  { name: 'React', icon: '⚛️', level: 85 },
+  { name: 'Node.js', icon: '💚', level: 85 },
+  { name: 'C++', icon: '⚙️', level: 75 },
+  { name: 'Swift', icon: '🍎', level: 80 },
+];
+---
+
+<section id="technologies">
+  <div class="container">
+    <h2>Tecnologías</h2>
+    <div class="tech-grid">
+      {technologies.map(tech => (
+        <div class="tech-card card">
+          <div class="tech-icon">{tech.icon}</div>
+          <h3>{tech.name}</h3>
+          <div class="progress-bar">
+            <div class="progress" style={`width: ${tech.level}%`}></div>
+          </div>
+          <span class="level">{tech.level}%</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .tech-card {
+    text-align: center;
+  }
+
+  .tech-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .tech-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--text-light);
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+
+  .progress {
+    height: 100%;
+    background: var(--gradient);
+    border-radius: 10px;
+    transition: width 1s ease;
+  }
+
+  .level {
+    font-size: 0.875rem;
+    color: var(--text-gray);
+  }
+
+  @media (max-width: 768px) {
+    .tech-grid {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+  }
+</style>

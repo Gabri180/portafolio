@@ -1,0 +1,566 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return [
+    // JavaScript
+    { params: { slug: 'todo-app' } },
+    { params: { slug: 'weather-app' } },
+    { params: { slug: 'memory-game' } },
+    // HTML/CSS
+    { params: { slug: 'landing-page' } },
+    { params: { slug: 'css-gallery' } },
+    // React
+    { params: { slug: 'dashboard' } },
+    { params: { slug: 'ecommerce' } },
+    // Python
+    { params: { slug: 'sentiment-analyzer' } },
+    { params: { slug: 'web-scraper' } },
+    { params: { slug: 'fastapi-rest' } },
+    // Java
+    { params: { slug: 'library-system' } },
+    { params: { slug: 'calculator' } },
+    { params: { slug: 'guessing-game' } },
+    // Node.js
+    { params: { slug: 'express-api' } },
+    { params: { slug: 'chat-server' } },
+    // C++
+    { params: { slug: 'student-manager' } },
+    { params: { slug: 'atm-simulator' } },
+    // Swift
+    { params: { slug: 'ios-todo' } },
+    { params: { slug: 'unit-converter' } },
+    // Astro
+    { params: { slug: 'markdown-blog' } },
+  ];
+}
+
+const { slug } = Astro.params;
+
+// Datos de todos los proyectos
+const projectsData = {
+  // JavaScript
+  'todo-app': {
+    title: 'Todo App',
+    language: 'JavaScript',
+    description: 'Aplicación completa de gestión de tareas con almacenamiento local, filtros y estadísticas.',
+    tags: ['JavaScript', 'LocalStorage', 'DOM', 'ES6'],
+    hasDemo: true,
+    features: [
+      'Agregar, editar y eliminar tareas',
+      'Marcar tareas como completadas',
+      'Filtrar por estado (todas, activas, completadas)',
+      'Almacenamiento persistente en LocalStorage',
+      'Estadísticas en tiempo real',
+      'Interfaz responsive y moderna'
+    ]
+  },
+  'weather-app': {
+    title: 'Weather App',
+    language: 'JavaScript',
+    description: 'Aplicación del clima que muestra datos meteorológicos con búsqueda por ciudad.',
+    tags: ['JavaScript', 'API', 'Fetch', 'Async/Await'],
+    hasDemo: true,
+    features: [
+      'Búsqueda de clima por ciudad',
+      'Datos meteorológicos simulados',
+      'Información detallada (temperatura, humedad, viento)',
+      'Iconos dinámicos según el clima',
+      'Interfaz intuitiva y atractiva',
+      'Animaciones suaves'
+    ]
+  },
+  'memory-game': {
+    title: 'Juego de Memoria',
+    language: 'JavaScript',
+    description: 'Juego interactivo de memoria con cartas, temporizador y sistema de puntuación.',
+    tags: ['JavaScript', 'Game', 'DOM', 'Events'],
+    hasDemo: true,
+    features: [
+      'Tablero de 16 cartas',
+      'Temporizador de juego',
+      'Contador de movimientos',
+      'Sistema de parejas',
+      'Animaciones fluidas',
+      'Reinicio de juego'
+    ]
+  },
+  
+  // HTML/CSS
+  'landing-page': {
+    title: 'Landing Page Moderna',
+    language: 'HTML/CSS',
+    description: 'Página de aterrizaje con diseño moderno, animaciones CSS y totalmente responsive.',
+    tags: ['HTML', 'CSS', 'Responsive', 'Animations'],
+    hasDemo: true,
+    features: [
+      'Diseño responsive',
+      'Animaciones CSS avanzadas',
+      'Sección hero con gradientes',
+      'Cards de características',
+      'Estadísticas animadas',
+      'Optimizada para móviles'
+    ]
+  },
+  'css-gallery': {
+    title: 'Galería CSS Grid',
+    language: 'HTML/CSS',
+    description: 'Galería de imágenes responsive usando CSS Grid con efectos hover creativos.',
+    tags: ['HTML', 'CSS', 'Grid', 'Hover Effects'],
+    hasDemo: true,
+    features: [
+      'Layout con CSS Grid',
+      'Efectos hover creativos',
+      'Overlays con información',
+      'Transiciones suaves',
+      'Diseño masonry',
+      'Totalmente responsive'
+    ]
+  },
+  
+  // React
+  'dashboard': {
+    title: 'Dashboard de Estadísticas',
+    language: 'React',
+    description: 'Dashboard interactivo con gráficos, estadísticas y tema claro/oscuro.',
+    tags: ['React', 'Hooks', 'Context API', 'Charts'],
+    hasDemo: true,
+    features: [
+      'Gráficos de barras interactivos',
+      'Tarjetas de estadísticas',
+      'Actividad en tiempo real',
+      'Tema claro/oscuro',
+      'Datos dinámicos',
+      'Diseño responsive'
+    ]
+  },
+  'ecommerce': {
+    title: 'Catálogo E-commerce',
+    language: 'React',
+    description: 'Catálogo de productos con carrito de compras, filtros y búsqueda.',
+    tags: ['React', 'State Management', 'Shopping Cart'],
+    hasDemo: true,
+    features: [
+      'Catálogo de productos',
+      'Carrito de compras funcional',
+      'Filtros por categoría',
+      'Búsqueda en tiempo real',
+      'Gestión de cantidades',
+      'Cálculo de totales'
+    ]
+  },
+  
+  // Proyectos sin demo (por ahora)
+  'sentiment-analyzer': {
+    title: 'Analizador de Sentimientos',
+    language: 'Python',
+    description: 'Sistema de análisis de sentimientos en textos usando procesamiento de lenguaje natural.',
+    tags: ['Python', 'NLP', 'Machine Learning'],
+    hasDemo: false,
+    features: [
+      'Análisis de sentimientos (positivo, negativo, neutral)',
+      'Procesamiento de lenguaje natural',
+      'Puntuación de sentimientos',
+      'Análisis por lotes',
+      'Integración con NLTK',
+      'Resultados detallados'
+    ]
+  },
+  'web-scraper': {
+    title: 'Web Scraper Avanzado',
+    language: 'Python',
+    description: 'Scraper multi-hilo para extraer información de sitios web.',
+    tags: ['Python', 'Web Scraping', 'Threading'],
+    hasDemo: false,
+    features: [
+      'Scraping multi-hilo',
+      'Extracción de datos estructurados',
+      'Manejo de errores robusto',
+      'Exportación a JSON',
+      'Control de concurrencia',
+      'BeautifulSoup integration'
+    ]
+  },
+  'fastapi-rest': {
+    title: 'API REST con FastAPI',
+    language: 'Python',
+    description: 'API completa con autenticación JWT y base de datos SQLite.',
+    tags: ['Python', 'FastAPI', 'JWT', 'SQLite'],
+    hasDemo: false,
+    features: [
+      'Endpoints RESTful completos',
+      'Autenticación con JWT',
+      'Validación de datos',
+      'Base de datos SQLite',
+      'Documentación automática',
+      'Manejo de errores'
+    ]
+  },
+  'library-system': {
+    title: 'Sistema de Gestión de Biblioteca',
+    language: 'Java',
+    description: 'Sistema completo para gestionar libros, usuarios y préstamos.',
+    tags: ['Java', 'OOP', 'Collections'],
+    hasDemo: false,
+    features: [
+      'Gestión de libros y usuarios',
+      'Sistema de préstamos',
+      'Búsqueda y filtrado',
+      'Persistencia de datos',
+      'Interfaz de consola',
+      'Estadísticas de biblioteca'
+    ]
+  },
+  'calculator': {
+    title: 'Calculadora Científica',
+    language: 'Java',
+    description: 'Calculadora con interfaz gráfica usando Swing.',
+    tags: ['Java', 'Swing', 'GUI'],
+    hasDemo: false,
+    features: [
+      'Operaciones básicas y científicas',
+      'Interfaz gráfica moderna',
+      'Funciones trigonométricas',
+      'Operaciones con potencias',
+      'Historial de cálculos',
+      'Manejo de errores'
+    ]
+  },
+  'guessing-game': {
+    title: 'Juego de Adivinar Número',
+    language: 'Java',
+    description: 'Juego interactivo con niveles de dificultad.',
+    tags: ['Java', 'Game', 'Console'],
+    hasDemo: false,
+    features: [
+      'Múltiples niveles de dificultad',
+      'Sistema de pistas',
+      'Contador de intentos',
+      'Estadísticas de juego',
+      'Puntuación por rendimiento',
+      'Interfaz de consola'
+    ]
+  },
+  'express-api': {
+    title: 'API RESTful con Express',
+    language: 'Node.js',
+    description: 'API completa con autenticación JWT y MongoDB.',
+    tags: ['Node.js', 'Express', 'MongoDB', 'JWT'],
+    hasDemo: false,
+    features: [
+      'Autenticación JWT',
+      'CRUD completo',
+      'Validación de datos',
+      'Middleware de seguridad',
+      'Conexión con MongoDB',
+      'Manejo de errores'
+    ]
+  },
+  'chat-server': {
+    title: 'Chat en Tiempo Real',
+    language: 'Node.js',
+    description: 'Servidor de chat con Socket.IO.',
+    tags: ['Node.js', 'Socket.IO', 'WebSocket'],
+    hasDemo: false,
+    features: [
+      'Mensajería en tiempo real',
+      'Salas de chat',
+      'Notificaciones de usuarios',
+      'Historial de mensajes',
+      'Lista de usuarios conectados',
+      'WebSocket bidireccional'
+    ]
+  },
+  'student-manager': {
+    title: 'Gestión de Estudiantes',
+    language: 'C++',
+    description: 'Sistema para gestionar estudiantes con archivos.',
+    tags: ['C++', 'OOP', 'File I/O'],
+    hasDemo: false,
+    features: [
+      'Gestión de estudiantes',
+      'Almacenamiento en archivos binarios',
+      'Búsqueda y ordenamiento',
+      'Cálculo de estadísticas',
+      'Interfaz de consola',
+      'Persistencia de datos'
+    ]
+  },
+  'atm-simulator': {
+    title: 'Simulador de Cajero Automático',
+    language: 'C++',
+    description: 'Sistema bancario con autenticación.',
+    tags: ['C++', 'OOP', 'Security'],
+    hasDemo: false,
+    features: [
+      'Autenticación segura',
+      'Operaciones bancarias',
+      'Historial de transacciones',
+      'Gestión de cuentas',
+      'Interfaz de consola',
+      'Validaciones de seguridad'
+    ]
+  },
+  'ios-todo': {
+    title: 'Todo List iOS',
+    language: 'Swift',
+    description: 'App de tareas con SwiftUI y persistencia.',
+    tags: ['Swift', 'SwiftUI', 'iOS'],
+    hasDemo: false,
+    features: [
+      'Interfaz con SwiftUI',
+      'Persistencia con UserDefaults',
+      'Animaciones nativas',
+      'Gestión de tareas',
+      'Filtros y búsqueda',
+      'Arquitectura MVVM'
+    ]
+  },
+  'unit-converter': {
+    title: 'Convertidor de Unidades',
+    language: 'Swift',
+    description: 'App para convertir diferentes unidades.',
+    tags: ['Swift', 'SwiftUI', 'iOS'],
+    hasDemo: false,
+    features: [
+      'Múltiples tipos de unidades',
+      'Conversión en tiempo real',
+      'Interfaz intuitiva',
+      'SwiftUI moderna',
+      'Validación de entrada',
+      'Soporte para iPad'
+    ]
+  },
+  'markdown-blog': {
+    title: 'Blog con Markdown',
+    language: 'Astro',
+    description: 'Blog estático con soporte para Markdown.',
+    tags: ['Astro', 'Markdown', 'Blog'],
+    hasDemo: false,
+    features: [
+      'Renderizado de Markdown',
+      'Rutas dinámicas',
+      'Frontmatter support',
+      'Optimización automática',
+      'SEO optimizado',
+      'Generación estática'
+    ]
+  }
+};
+
+const project = projectsData[slug as keyof typeof projectsData];
+
+if (!project) {
+  return Astro.redirect('/404');
+}
+---
+
+<Layout title={`${project.title} - Gabriel Martínez`}>
+  <div class="project-page">
+    <header class="project-header">
+      <div class="container">
+        <a href="/#projects" class="back-link">← Volver a proyectos</a>
+        <div class="project-info">
+          <span class="language-badge">{project.language}</span>
+          <h1>{project.title}</h1>
+          <p class="project-description">{project.description}</p>
+          <div class="project-tags">
+            {project.tags.map((tag: string) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="project-main">
+      <div class="container">
+        <div class="project-content">
+          <aside class="project-sidebar">
+            <h3>Características</h3>
+            <ul class="features-list">
+              {project.features.map((feature: string) => (
+                <li>✓ {feature}</li>
+              ))}
+            </ul>
+          </aside>
+
+          <div class="project-demo">
+            <h3>{project.hasDemo ? 'Demo en Vivo' : 'Proyecto'}</h3>
+            <div class="demo-container">
+              {project.hasDemo ? (
+                <div id={`${slug}-demo`}></div>
+              ) : (
+                <div class="coming-soon">
+                  <h2>💻 Proyecto Backend/Desktop</h2>
+                  <p>Este es un proyecto de {project.language} que funciona en entorno backend o desktop.</p>
+                  <p>Las características completas están listadas en el panel lateral.</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  {project.hasDemo && (
+    <script is:inline src={`/demos/${slug}.js`}></script>
+  )}
+</Layout>
+
+<style>
+  .project-page {
+    min-height: 100vh;
+    background: var(--bg-dark);
+  }
+
+  .project-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 3rem 0;
+    color: white;
+  }
+
+  .back-link {
+    color: white;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+  }
+
+  .back-link:hover {
+    opacity: 1;
+  }
+
+  .project-info {
+    max-width: 800px;
+  }
+
+  .language-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .project-info h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-description {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .tag {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .project-main {
+    padding: 3rem 0;
+  }
+
+  .project-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+  }
+
+  .project-sidebar {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: 1rem;
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .project-sidebar h3 {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+  }
+
+  .features-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .features-list li {
+    color: var(--text-gray);
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .project-demo h3 {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .demo-container {
+    background: var(--bg-card);
+    border-radius: 1rem;
+    padding: 2rem;
+    min-height: 600px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .coming-soon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 600px;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .coming-soon h2 {
+    font-size: 2rem;
+    color: var(--text-light);
+  }
+
+  .coming-soon p {
+    color: var(--text-gray);
+    font-size: 1.125rem;
+    max-width: 500px;
+  }
+
+  @media (max-width: 968px) {
+    .project-content {
+      grid-template-columns: 1fr;
+    }
+
+    .project-sidebar {
+      position: relative;
+      top: 0;
+    }
+
+    .project-info h1 {
+      font-size: 2rem;
+    }
+  }
+</style>

@@ -1,0 +1,282 @@
+---
+import ProjectCard from './ProjectCard.astro';
+
+const pythonProjects = [
+  {
+    title: "Analizador de Sentimientos",
+    description: "Sistema de análisis de sentimientos en textos usando procesamiento de lenguaje natural.",
+    language: "Python",
+    tags: ["NLP", "Machine Learning", "NLTK"],
+    slug: "sentiment-analyzer"
+  },
+  {
+    title: "Web Scraper Avanzado",
+    description: "Scraper multi-hilo para extraer información de sitios web.",
+    language: "Python",
+    tags: ["Web Scraping", "Threading", "BeautifulSoup"],
+    slug: "web-scraper"
+  },
+  {
+    title: "API REST con FastAPI",
+    description: "API completa con autenticación JWT y base de datos SQLite.",
+    language: "Python",
+    tags: ["FastAPI", "JWT", "SQLite"],
+    slug: "fastapi-rest"
+  }
+];
+
+const javaProjects = [
+  {
+    title: "Sistema de Gestión de Biblioteca",
+    description: "Sistema completo para gestionar libros, usuarios y préstamos.",
+    language: "Java",
+    tags: ["OOP", "Collections", "File I/O"],
+    slug: "library-system"
+  },
+  {
+    title: "Calculadora Científica",
+    description: "Calculadora con interfaz gráfica usando Swing.",
+    language: "Java",
+    tags: ["Swing", "GUI", "Math"],
+    slug: "calculator"
+  },
+  {
+    title: "Juego de Adivinar Número",
+    description: "Juego interactivo con niveles de dificultad.",
+    language: "Java",
+    tags: ["Game", "Random", "Scanner"],
+    slug: "guessing-game"
+  }
+];
+
+const jsProjects = [
+  {
+    title: "Todo App",
+    description: "Aplicación de tareas con almacenamiento local y filtros.",
+    language: "JavaScript",
+    tags: ["DOM", "LocalStorage", "ES6"],
+    slug: "todo-app"
+  },
+  {
+    title: "Weather App",
+    description: "Aplicación del clima que consume API pública.",
+    language: "JavaScript",
+    tags: ["API", "Fetch", "Async/Await"],
+    slug: "weather-app"
+  },
+  {
+    title: "Juego de Memoria",
+    description: "Juego de cartas de memoria con temporizador.",
+    language: "JavaScript",
+    tags: ["Game", "DOM", "Events"],
+    slug: "memory-game"
+  }
+];
+
+const htmlCssProjects = [
+  {
+    title: "Landing Page Moderna",
+    description: "Página responsive con animaciones CSS.",
+    language: "HTML/CSS",
+    tags: ["Responsive", "Animations", "Flexbox"],
+    slug: "landing-page"
+  },
+  {
+    title: "Galería con CSS Grid",
+    description: "Galería responsive con efectos hover.",
+    language: "HTML/CSS",
+    tags: ["CSS Grid", "Gallery", "Hover"],
+    slug: "css-gallery"
+  }
+];
+
+const reactProjects = [
+  {
+    title: "Dashboard Estadísticas",
+    description: "Dashboard interactivo con gráficos en tiempo real.",
+    language: "React",
+    tags: ["Hooks", "Context API", "Charts"],
+    slug: "dashboard"
+  },
+  {
+    title: "E-commerce Catalog",
+    description: "Catálogo de productos con carrito de compras.",
+    language: "React",
+    tags: ["Redux", "Shopping Cart", "State"],
+    slug: "ecommerce"
+  }
+];
+
+const nodejsProjects = [
+  {
+    title: "API RESTful",
+    description: "API completa con autenticación JWT y MongoDB.",
+    language: "Node.js",
+    tags: ["Express", "MongoDB", "JWT"],
+    slug: "express-api"
+  },
+  {
+    title: "Chat en Tiempo Real",
+    description: "Servidor de chat con Socket.IO.",
+    language: "Node.js",
+    tags: ["Socket.IO", "Real-time", "WebSocket"],
+    slug: "chat-server"
+  }
+];
+
+const cppProjects = [
+  {
+    title: "Gestión de Estudiantes",
+    description: "Sistema para gestionar estudiantes con archivos.",
+    language: "C++",
+    tags: ["OOP", "File I/O", "STL"],
+    slug: "student-manager"
+  },
+  {
+    title: "Cajero Automático",
+    description: "Sistema bancario con autenticación.",
+    language: "C++",
+    tags: ["Security", "File I/O", "OOP"],
+    slug: "atm-simulator"
+  }
+];
+
+const swiftProjects = [
+  {
+    title: "Todo List iOS",
+    description: "App de tareas con SwiftUI y persistencia.",
+    language: "Swift",
+    tags: ["SwiftUI", "UserDefaults", "MVVM"],
+    slug: "ios-todo"
+  },
+  {
+    title: "Convertidor Unidades",
+    description: "App para convertir diferentes unidades.",
+    language: "Swift",
+    tags: ["SwiftUI", "Measurement", "UI"],
+    slug: "unit-converter"
+  }
+];
+
+const astroProjects = [
+  {
+    title: "Blog con Markdown",
+    description: "Blog estático con soporte para Markdown.",
+    language: "Astro",
+    tags: ["Markdown", "Blog", "Static"],
+    slug: "markdown-blog"
+  }
+];
+---
+
+<section id="projects">
+  <div class="container">
+    <h2>Proyectos</h2>
+    
+    <div class="projects-section">
+      <h3 class="language-title">🐍 Python</h3>
+      <div class="projects-grid">
+        {pythonProjects.map(project => (
+          <ProjectCard {...project} />
+        ))}
+      </div>
+    </div>
+    
+    <div class="projects-section">
+      <h3 class="language-title">☕ Java</h3>
+      <div class="projects-grid">
+        {javaProjects.map(project => (
+          <ProjectCard {...project} />
+        ))}
+      </div>
+    </div>
+    
+    <div class="projects-section">
+      <h3 class="language-title">⚡ JavaScript</h3>
+      <div class="projects-grid">
+        {jsProjects.map(project => (
+          <ProjectCard {...project} />
+        ))}
+      </div>
+    </div>
+    
+    <div class="projects-section">
+      <h3 class="language-title">🎨 HTML/CSS</h3>
+      <div class="projects-grid">
+        {htmlCssProjects.map(project => (
+          <ProjectCard {...project} />
+        ))}
+      </div>
+    </div>
+    
+    <div class="projects-section">
+      <h3 class="language-title">🚀 Astro</h3>
+      <div class="projects-grid">
+        {astroProjects.map(project => (
+          <ProjectCard {...project} />
+        ))}
+      </div>
+    </div>
+    
+    <div class="projects-section">
+      <h3 class="language-title">⚛️ React</h3>
+      <div class="projects-grid">
+        {reactProjects.map(project => (
+          <ProjectCard {...project} />
+        ))}
+      </div>
+    </div>
+    
+    <div class="projects-section">
+      <h3 class="language-title">💚 Node.js</h3>
+      <div class="projects-grid">
+        {nodejsProjects.map(project => (
+          <ProjectCard {...project} />
+        ))}
+      </div>
+    </div>
+    
+    <div class="projects-section">
+      <h3 class="language-title">⚙️ C++</h3>
+      <div class="projects-grid">
+        {cppProjects.map(project => (
+          <ProjectCard {...project} />
+        ))}
+      </div>
+    </div>
+    
+    <div class="projects-section">
+      <h3 class="language-title">🍎 Swift</h3>
+      <div class="projects-grid">
+        {swiftProjects.map(project => (
+          <ProjectCard {...project} />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    margin-bottom: 4rem;
+  }
+
+  .language-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-light);
+    text-align: left;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

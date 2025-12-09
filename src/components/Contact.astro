@@ -1,0 +1,155 @@
+---
+---
+
+<section id="contact">
+    <div class="container">
+      <h2>Contacto</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <p class="contact-text">
+            ¿Interesado en trabajar juntos o tienes alguna pregunta?
+            ¡No dudes en contactarme!
+          </p>
+          
+          <div class="contact-methods">
+            <a href="mailto:gabriel@email.com" class="contact-card card">
+              <div class="contact-icon">📧</div>
+              <h3>Email</h3>
+              <p>gabriel@email.com</p>
+            </a>
+            
+            <a href="https://github.com/gabrielmartinez" target="_blank" class="contact-card card">
+              <div class="contact-icon">💻</div>
+              <h3>GitHub</h3>
+              <p>@gabrielmartinez</p>
+            </a>
+            
+            <a href="https://linkedin.com/in/gabrielmartinez" target="_blank" class="contact-card card">
+              <div class="contact-icon">💼</div>
+              <h3>LinkedIn</h3>
+              <p>Gabriel Martínez</p>
+            </a>
+          </div>
+        </div>
+        
+        <form class="contact-form card" id="contactForm">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn">Enviar Mensaje</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    .contact-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+  
+    .contact-text {
+      font-size: 1.125rem;
+      color: var(--text-gray);
+      margin-bottom: 2rem;
+    }
+  
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .contact-card {
+      text-decoration: none;
+      color: inherit;
+      text-align: center;
+      padding: 1.5rem;
+    }
+  
+    .contact-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+  
+    .contact-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-light);
+    }
+  
+    .contact-card p {
+      color: var(--text-gray);
+    }
+  
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  
+    .form-group label {
+      font-weight: 600;
+      color: var(--text-light);
+    }
+  
+    .form-group input,
+    .form-group textarea {
+      padding: 0.875rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.5rem;
+      color: var(--text-light);
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+  
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+  
+    .form-group textarea {
+      resize: vertical;
+      font-family: inherit;
+    }
+  
+    @media (max-width: 768px) {
+      .contact-content {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  
+  <script>
+    const form = document.getElementById('contactForm') as HTMLFormElement | null;
+    
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('¡Mensaje enviado! (Funcionalidad de ejemplo)');
+      form.reset();
+    });
+  </script>
+  

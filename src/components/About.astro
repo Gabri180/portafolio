@@ -1,0 +1,91 @@
+---
+---
+
+<section id="about">
+    <div class="container">
+      <h2>Sobre mí</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p class="intro">
+            Soy Gabriel Martínez, un joven desarrollador de 14 años con una gran pasión
+            por la tecnología y la programación. Desde muy temprana edad, me fascinó
+            el mundo del desarrollo de software.
+          </p>
+          <p>
+            He trabajado con múltiples lenguajes de programación y frameworks modernos,
+            siempre buscando aprender nuevas tecnologías y mejorar mis habilidades.
+            Me encanta resolver problemas complejos y crear soluciones elegantes y eficientes.
+          </p>
+          <div class="stats">
+            <div class="stat-item">
+              <h3>10+</h3>
+              <p>Tecnologías</p>
+            </div>
+            <div class="stat-item">
+              <h3>25+</h3>
+              <p>Proyectos</p>
+            </div>
+            <div class="stat-item">
+              <h3>2+</h3>
+              <p>Años de experiencia</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    .about-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+  
+    .about-text p {
+      font-size: 1.125rem;
+      color: var(--text-gray);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+  
+    .intro {
+      font-size: 1.25rem;
+      color: var(--text-light);
+    }
+  
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+  
+    .stat-item {
+      text-align: center;
+      padding: 2rem;
+      background: var(--bg-card);
+      border-radius: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  
+    .stat-item h3 {
+      font-size: 2.5rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+  
+    .stat-item p {
+      color: var(--text-gray);
+      font-size: 1rem;
+    }
+  
+    @media (max-width: 768px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  

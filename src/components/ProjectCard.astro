@@ -1,0 +1,99 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  language: string;
+  tags: string[];
+  slug: string;
+}
+
+const { title, description, language, tags, slug } = Astro.props;
+---
+
+<a href={`/projects/${slug}`} class="project-card card">
+  <div class="project-header">
+    <h3>{title}</h3>
+    <span class="language-badge">{language}</span>
+  </div>
+  <p class="project-description">{description}</p>
+  <div class="project-tags">
+    {tags.map(tag => (
+      <span class="tag">{tag}</span>
+    ))}
+  </div>
+  <div class="view-project">
+    <span>Ver proyecto →</span>
+  </div>
+</a>
+
+<style>
+  .project-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .project-header h3 {
+    font-size: 1.25rem;
+    color: var(--text-light);
+  }
+
+  .language-badge {
+    padding: 0.25rem 0.75rem;
+    background: var(--gradient);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .project-description {
+    color: var(--text-gray);
+    margin-bottom: 1rem;
+    flex-grow: 1;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .tag {
+    padding: 0.25rem 0.75rem;
+    background: rgba(99, 102, 241, 0.2);
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    color: var(--primary);
+  }
+
+  .view-project {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--primary);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .project-card:hover .view-project {
+    gap: 1rem;
+  }
+</style>
