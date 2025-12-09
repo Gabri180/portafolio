@@ -1,0 +1,229 @@
+---
+const skillCategories = [
+  {
+    title: '💻 Frontend',
+    color: '#00ff41',
+    skills: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Astro', 'SwiftUI']
+  },
+  {
+    title: '⚙️ Backend',
+    color: '#0a84ff',
+    skills: ['Node.js', 'Python', 'Java', 'C++', 'FastAPI', 'Express.js']
+  },
+  {
+    title: '📱 Mobile',
+    color: '#a855f7',
+    skills: ['Swift', 'iOS Development', 'Xcode', 'UIKit']
+  },
+  {
+    title: '🔒 Ciberseguridad',
+    color: '#ff0a78',
+    skills: ['Kali Linux', 'Ethical Hacking', 'Python for Security', 'Network Analysis', 'Penetration Testing', 'Security Automation']
+  },
+  {
+    title: '🛠️ Herramientas',
+    color: '#00ff41',
+    skills: ['Git', 'GitHub', 'VS Code', 'Docker', 'Bash/Shell', 'Proxmox']
+  }
+];
+---
+
+<section id="skills">
+  <div class="container">
+    <h2>💪 Habilidades Técnicas</h2>
+    
+    <div class="skills-grid">
+      {skillCategories.map(category => (
+        <div class="skill-category">
+          <h3 class="category-title">{category.title}</h3>
+          <div class="skills-list">
+            {category.skills.map(skill => (
+              <span class="skill-badge">{skill}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="security-highlight">
+      <div class="security-icon">🛡️</div>
+      <h3>Especialización en Ciberseguridad</h3>
+      <p>Experto en análisis de seguridad, herramientas de pentesting y desarrollo de scripts de automatización para tareas de seguridad ofensiva con Python y Bash. Experiencia práctica con Kali Linux y entornos virtualizados.</p>
+      <div class="security-badges">
+        <span class="badge-special">🐧 Kali Linux</span>
+        <span class="badge-special">🐍 Offensive Python</span>
+        <span class="badge-special">🔐 Pentesting</span>
+        <span class="badge-special">🌐 Network Security</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .skill-category {
+    background: var(--bg-card);
+    border: 1px solid rgba(0, 255, 65, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+  }
+
+  .skill-category:hover {
+    border-color: var(--primary);
+    box-shadow: var(--glow-green);
+    transform: translateY(-5px);
+  }
+
+  .category-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+  }
+
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .skill-badge {
+    padding: 0.6rem 1.2rem;
+    background: var(--bg-elevated);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .skill-badge:hover {
+    background: var(--primary);
+    color: var(--bg-dark);
+    box-shadow: var(--glow-green);
+    transform: scale(1.05);
+  }
+
+  .security-highlight {
+    background: linear-gradient(135deg, rgba(255, 10, 120, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+    border: 2px solid var(--accent);
+    border-radius: 1rem;
+    padding: 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .security-highlight::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 10, 120, 0.1) 0%, transparent 70%);
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+  }
+
+  .security-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 20px rgba(255, 10, 120, 0.5));
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .security-highlight h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    background: var(--gradient-alt);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'JetBrains Mono', monospace;
+    position: relative;
+    z-index: 1;
+    font-weight: 700;
+  }
+
+  .security-highlight p {
+    color: var(--text-gray);
+    font-size: 1.125rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+    position: relative;
+    z-index: 1;
+  }
+
+  .security-badges {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .badge-special {
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 10, 120, 0.2);
+    border: 2px solid var(--accent);
+    border-radius: 50px;
+    color: var(--accent);
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+  }
+
+  .badge-special:hover {
+    background: var(--accent);
+    color: var(--bg-dark);
+    box-shadow: var(--glow-pink);
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .security-highlight {
+      padding: 2rem 1.5rem;
+    }
+
+    .security-highlight h3 {
+      font-size: 1.5rem;
+    }
+
+    .security-highlight p {
+      font-size: 1rem;
+    }
+
+    .security-badges {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>

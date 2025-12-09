@@ -1,29 +1,43 @@
 ---
-const technologies = [
-  { name: 'Python', icon: '🐍', level: 90 },
-  { name: 'Java', icon: '☕', level: 85 },
-  { name: 'JavaScript', icon: '⚡', level: 95 },
-  { name: 'HTML/CSS', icon: '🎨', level: 95 },
-  { name: 'Astro', icon: '🚀', level: 80 },
-  { name: 'React', icon: '⚛️', level: 85 },
-  { name: 'Node.js', icon: '💚', level: 85 },
-  { name: 'C++', icon: '⚙️', level: 75 },
-  { name: 'Swift', icon: '🍎', level: 80 },
+const languages = [
+  // Lenguajes principales
+  { name: 'Python', level: 95, icon: '🐍', color: '#4ecdc4' },
+  { name: 'Swift', level: 90, icon: '🍎', color: '#ff6b35' },
+  { name: 'JavaScript', level: 85, icon: '⚡', color: '#ffe66d' },
+  { name: 'Java', level: 85, icon: '☕', color: '#a8dadc' },
+  { name: 'C++', level: 80, icon: '⚙️', color: '#f1faee' },
+  { name: 'TypeScript', level: 70, icon: '📘', color: '#0a84ff' },
+  
+  // Frontend
+  { name: 'HTML/CSS', level: 90, icon: '🎨', color: '#ff006e' },
+  { name: 'React', level: 80, icon: '⚛️', color: '#00b4d8' },
+  { name: 'Astro', level: 75, icon: '🚀', color: '#a855f7' },
+  
+  // Backend & Bases de datos
+  { name: 'Node.js', level: 75, icon: '💚', color: '#06ffa5' },
+  { name: 'MongoDB', level: 70, icon: '🍃', color: '#00ff41' },
+  { name: 'SQL', level: 70, icon: '🗄️', color: '#cdb4db' },
+  
+  // DevOps & Herramientas
+  { name: 'Git', level: 85, icon: '📦', color: '#ff0a78' },
+  { name: 'Linux', level: 80, icon: '🐧', color: '#ffe66d' },
+  { name: 'Bash', level: 75, icon: '🐚', color: '#90e0ef' },
+  { name: 'Docker', level: 65, icon: '🐳', color: '#00b4d8' },
 ];
 ---
 
 <section id="technologies">
   <div class="container">
-    <h2>Tecnologías</h2>
+    <h2>🛠️ Tecnologías</h2>
     <div class="tech-grid">
-      {technologies.map(tech => (
-        <div class="tech-card card">
-          <div class="tech-icon">{tech.icon}</div>
-          <h3>{tech.name}</h3>
-          <div class="progress-bar">
-            <div class="progress" style={`width: ${tech.level}%`}></div>
+      {languages.map((lang) => (
+        <div class="tech-card">
+          <div class="tech-icon">{lang.icon}</div>
+          <h3>{lang.name}</h3>
+          <div class="progress-container">
+            <div class="progress-bar" style={`width: ${lang.level}%; background: ${lang.color}`}></div>
           </div>
-          <span class="level">{tech.level}%</span>
+          <span class="percentage">{lang.level}%</span>
         </div>
       ))}
     </div>
@@ -33,50 +47,65 @@ const technologies = [
 <style>
   .tech-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
   }
 
   .tech-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(0, 255, 65, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
     text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .tech-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--glow-green);
+    transform: translateY(-5px);
   }
 
   .tech-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px var(--primary));
   }
 
   .tech-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
     color: var(--text-light);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-family: 'JetBrains Mono', monospace;
   }
 
-  .progress-bar {
+  .progress-container {
     width: 100%;
     height: 8px;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--bg-elevated);
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 0.5rem;
   }
 
-  .progress {
+  .progress-bar {
     height: 100%;
-    background: var(--gradient);
     border-radius: 10px;
     transition: width 1s ease;
+    box-shadow: 0 0 10px currentColor;
   }
 
-  .level {
-    font-size: 0.875rem;
-    color: var(--text-gray);
+  .percentage {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: 'JetBrains Mono', monospace;
   }
 
   @media (max-width: 768px) {
     .tech-grid {
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1rem;
+      gap: 1.5rem;
     }
   }
 </style>

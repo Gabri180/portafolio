@@ -1,121 +1,328 @@
 ---
 ---
 
-<section id="home" class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          Hola, soy <span class="highlight">Gabriel Martínez</span>
-        </h1>
-        <p class="hero-subtitle">Desarrollador Full Stack de 14 años</p>
-        <p class="hero-description">
-          Apasionado por la tecnología y la programación. Creo soluciones innovadoras
-          con múltiples lenguajes y frameworks modernos.
-        </p>
-        <div class="hero-buttons">
-          <a href="#projects" class="btn">Ver Proyectos</a>
-          <a href="#contact" class="btn btn-outline">Contactar</a>
+<section id="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="glitch-wrapper">
+        <h1 class="glitch" data-text="Gabriel Martínez">Gabriel Martínez</h1>
+      </div>
+      <p class="subtitle">
+        <span class="typing-effect">Full Stack Developer & Cybersecurity Enthusiast</span>
+      </p>
+      <p class="description">
+        Desarrollador especializado en <span class="highlight">iOS</span>, 
+        <span class="highlight">Web</span> y <span class="highlight">Ciberseguridad</span>
+      </p>
+      <div class="cta-buttons">
+        <a href="#projects" class="btn btn-primary">
+          <span>Ver Proyectos</span>
+          <span class="btn-arrow">→</span>
+        </a>
+        <a href="#contact" class="btn btn-secondary">
+          <span>Contacto</span>
+          <span class="btn-icon">📧</span>
+        </a>
+      </div>
+      
+      <div class="terminal-preview">
+        <div class="terminal-header">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-title">bash</span>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line">
+            <span class="prompt">~$</span>
+            <span class="command">whoami</span>
+          </div>
+          <div class="terminal-output">gabriel@developer</div>
+          
+          <div class="terminal-line">
+            <span class="prompt">~$</span>
+            <span class="command">ls skills/</span>
+          </div>
+          <div class="terminal-output">Swift  Python  React  Cybersecurity  iOS</div>
+          
+          <div class="terminal-line">
+            <span class="prompt">~$</span>
+            <span class="cursor">_</span>
+          </div>
         </div>
       </div>
     </div>
-  </section>
-  
-  <style>
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
+  </div>
+</section>
+
+<style>
+  #hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 0;
+  padding-top: 80px; /* ← AÑADE ESTO para compensar el navbar */
+}
+
+  .hero-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .glitch-wrapper {
+    margin-bottom: 1.5rem;
+  }
+
+  .glitch {
+    font-size: 4rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--primary);
+    text-shadow: var(--glow-green);
+    position: relative;
+    animation: glitch 2s infinite;
+  }
+
+  @keyframes glitch {
+    0%, 90%, 100% {
+      transform: translate(0);
     }
-  
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1), transparent 50%);
-      z-index: -1;
+    92% {
+      transform: translate(-2px, 2px);
     }
-  
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-      padding-top: 5rem;
+    94% {
+      transform: translate(2px, -2px);
     }
-  
-    .hero-title {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-      animation: fadeInUp 0.8s ease;
+    96% {
+      transform: translate(-2px, -2px);
     }
-  
-    .highlight {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    color: var(--secondary);
+    margin-bottom: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+  }
+
+  .typing-effect {
+    border-right: 2px solid var(--secondary);
+    animation: blink 0.7s infinite;
+  }
+
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+
+  .description {
+    font-size: 1.25rem;
+    color: var(--text-gray);
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+  }
+
+  .highlight {
+    color: var(--primary);
+    font-weight: 600;
+    text-shadow: var(--glow-green);
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .btn:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .btn-primary {
+    background: var(--primary);
+    color: var(--bg-dark);
+    border: 2px solid var(--primary);
+  }
+
+  .btn-primary:hover {
+    box-shadow: var(--glow-green);
+    transform: translateY(-3px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--secondary);
+    border: 2px solid var(--secondary);
+  }
+
+  .btn-secondary:hover {
+    background: var(--secondary);
+    color: var(--bg-dark);
+    box-shadow: var(--glow-blue);
+    transform: translateY(-3px);
+  }
+
+  .terminal-preview {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    border: 1px solid var(--primary);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: var(--glow-green);
+  }
+
+  .terminal-header {
+    background: var(--bg-elevated);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid rgba(0, 255, 65, 0.3);
+  }
+
+  .terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .terminal-dot.red { background: #ff5f56; }
+  .terminal-dot.yellow { background: #ffbd2e; }
+  .terminal-dot.green { background: #27c93f; }
+
+  .terminal-title {
+    margin-left: auto;
+    color: var(--text-gray);
+    font-size: 0.875rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .terminal-body {
+    padding: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    text-align: left;
+    line-height: 1.8;
+  }
+
+  .terminal-line {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .terminal-output {
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+  }
+
+  .prompt {
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .command {
+    color: var(--secondary);
+    font-weight: 600;
+  }
+
+  .cursor {
+    color: var(--primary);
+    animation: blink 0.7s infinite;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    .glitch {
+      font-size: 2.5rem;
     }
-  
-    .hero-subtitle {
-      font-size: 1.5rem;
-      color: var(--text-gray);
-      margin-bottom: 1.5rem;
-      animation: fadeInUp 0.8s ease 0.2s both;
-    }
-  
-    .hero-description {
+
+    .subtitle {
       font-size: 1.125rem;
-      color: var(--text-gray);
-      margin-bottom: 2rem;
-      animation: fadeInUp 0.8s ease 0.4s both;
     }
-  
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      animation: fadeInUp 0.8s ease 0.6s both;
+
+    .description {
+      font-size: 1rem;
+      padding: 0 1rem;
     }
-  
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--primary);
-      color: var(--primary);
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 0 1rem;
     }
-  
-    .btn-outline:hover {
-      background: var(--primary);
-      color: white;
+
+    .terminal-preview {
+      margin: 0 1rem;
     }
-  
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+
+    .terminal-body {
+      padding: 1.5rem;
+      font-size: 0.875rem;
     }
-  
-    @media (max-width: 768px) {
-      .hero-title {
-        font-size: 2.5rem;
-      }
-  
-      .hero-subtitle {
-        font-size: 1.25rem;
-      }
-  
-      .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
+
+    .terminal-output {
+      padding-left: 1.5rem;
     }
-  </style>
-  
+  }
+
+  @media (max-width: 480px) {
+    .glitch {
+      font-size: 2rem;
+    }
+
+    .terminal-body {
+      font-size: 0.75rem;
+      padding: 1rem;
+    }
+
+    .terminal-line {
+      gap: 0.5rem;
+    }
+
+    .terminal-output {
+      padding-left: 1rem;
+      word-break: break-word;
+    }
+  }
+</style>

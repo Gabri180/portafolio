@@ -1,26 +1,178 @@
 ---
 interface Props {
   title: string;
-  description?: string;
 }
 
-const { title, description = "Portafolio de Gabriel Martínez - Desarrollador Full Stack de 14 años" } = Astro.props;
+const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content={description}>
-  <meta name="author" content="Gabriel Martínez">
-  <title>{title}</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/src/styles/global.css">
-</head>
-<body>
-  <slot />
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Portfolio de Gabriel Martínez - Desarrollador Full Stack & Ciberseguridad" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;600;700&display=swap');
+
+  :root {
+    /* Colores Cyber/Developer */
+    --primary: #00ff41;           /* Verde terminal */
+    --primary-dark: #00cc33;      /* Verde más oscuro */
+    --secondary: #0a84ff;         /* Azul cyber */
+    --accent: #ff0a78;            /* Rosa neón */
+    --purple: #a855f7;            /* Morado tech */
+    
+    /* Fondos oscuros */
+    --bg-dark: #000000;           /* Negro absoluto */
+    --bg-darker: #0a0a0a;         /* Negro profundo */
+    --bg-card: #0f0f0f;           /* Cards oscuras */
+    --bg-elevated: #1a1a1a;       /* Elementos elevados */
+    
+    /* Textos */
+    --text-light: #e0e0e0;        /* Texto principal */
+    --text-gray: #8b8b8b;         /* Texto secundario */
+    --text-dim: #666666;          /* Texto apagado */
+    
+    /* Efectos */
+    --glow-green: 0 0 20px rgba(0, 255, 65, 0.4);
+    --glow-blue: 0 0 20px rgba(10, 132, 255, 0.4);
+    --glow-pink: 0 0 20px rgba(255, 10, 120, 0.4);
+    
+    /* Gradientes cyber */
+    --gradient: linear-gradient(135deg, #00ff41 0%, #0a84ff 100%);
+    --gradient-alt: linear-gradient(135deg, #ff0a78 0%, #a855f7 100%);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Efecto de grid cyber en el fondo */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  code, pre {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  section {
+    padding: 5rem 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    position: relative;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  h2::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--gradient);
+    margin: 1rem auto 0;
+    border-radius: 2px;
+    box-shadow: var(--glow-green);
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid rgba(0, 255, 65, 0.1);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--glow-green);
+    transform: translateY(-5px);
+  }
+
+  /* Scrollbar personalizada */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg-darker);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+  }
+
+  @media (max-width: 768px) {
+    section {
+      padding: 3rem 0;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .container {
+      padding: 0 1rem;
+    }
+  }
+</style>
