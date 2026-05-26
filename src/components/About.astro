@@ -3,56 +3,33 @@
 
 <section id="about">
   <div class="container">
-    <h2>👨‍💻 Sobre mí</h2>
+    <h2>Sobre mí</h2>
     <div class="about-content">
       <div class="about-text">
-        <p class="intro">
-          Soy <strong>Gabriel Martínez</strong>. Tengo <strong>14 años</strong> y soy un desarrollador apasionado por la tecnología, la ciberseguridad 
-          y la inteligencia artificial. Actualmente curso <strong>3º de ESO</strong> en España, compaginando 
-          mis estudios con el desarrollo de aplicaciones iOS, proyectos web y la exploración del mundo de la 
-          seguridad informática.
+        <p>
+          Empecé con Minecraft. Literalmente. Con 11 años monté un servidor, luego empecé
+          a vender builds en <strong>BuiltByBit</strong> y sin darme cuenta ya había generado
+          más de <strong>3.000€</strong>. No tenía ni idea de programar todavía — pero aprendí
+          cómo funcionan los servidores, cómo gestionar dinero online y cómo tratar con clientes
+          cuando tienes 12 años y nadie lo sabe.
         </p>
         <p>
-          Comencé a programar de forma autodidacta hace varios años, y desde entonces he trabajado en múltiples 
-          proyectos que van desde aplicaciones móviles con <strong>SwiftUI</strong> hasta servidores backend 
-          con <strong>Node.js</strong>, pasando por herramientas de seguridad y automatización en 
-          <strong>Python</strong>. Mi enfoque principal está en crear soluciones eficientes y elegantes 
-          que resuelvan problemas reales.
+          Después de eso me enganchó la informática de verdad. Empecé con <strong>Python</strong>
+          viendo tutoriales en YouTube, luego con <strong>Swift</strong> porque quería hacer apps
+          para mi iPhone, y ahora también hago web con <strong>Astro y JavaScript</strong>.
+          Todo autodidacta, todo a base de romper cosas y arreglarlas.
         </p>
         <p>
-          Además de programar, gestiono mi propia infraestructura con <strong>Proxmox y Kali Linux</strong>, 
-          experimento con herramientas de pentesting, y he monetizado proyectos relacionados con Minecraft, 
-          generando más de <strong>3000 EUR</strong> a través de builds y gestión de servidores.
+          En casa tengo montado un servidor con <strong>Proxmox</strong> donde corro máquinas
+          virtuales — una de ellas con <strong>Kali Linux</strong> para practicar seguridad.
+          No soy ningún hacker experto, pero sé orientarme en un terminal y entiendo bastantes
+          cosas sobre cómo funcionan los ataques más comunes. Todavía estoy aprendiendo.
         </p>
         <p>
-          Mi objetivo a corto plazo es seguir desarrollando mis habilidades técnicas y construir un portfolio 
-          sólido de proyectos innovadores. A largo plazo, planeo estudiar <strong>Ingeniería Informática</strong> 
-          e <strong>Ingeniería en Inteligencia Artificial</strong>, con la meta de trabajar en empresas 
-          tecnológicas de primer nivel como <strong>Apple</strong> o en startups disruptivas relacionadas 
-          con IA y seguridad.
+          Ahora mismo estoy en <strong>3º de ESO</strong>. Cuando acabe el instituto quiero
+          estudiar ingeniería informática. No sé exactamente en qué me voy a especializar —
+          me mola tanto el desarrollo como la seguridad — pero tengo tiempo para decidirlo.
         </p>
-        <p>
-          Me motiva especialmente la intersección entre <strong>desarrollo de software</strong>, 
-          <strong>machine learning</strong> y <strong>ciberseguridad ofensiva</strong>, áreas donde 
-          planeo especializarme en mi carrera profesional.
-        </p>
-        <div class="stats">
-          <div class="stat-item">
-            <div class="stat-icon">💻</div>
-            <h3>16+</h3>
-            <p>Tecnologías</p>
-          </div>
-          <div class="stat-item">
-            <div class="stat-icon">🚀</div>
-            <h3>25+</h3>
-            <p>Proyectos</p>
-          </div>
-          <div class="stat-item">
-            <div class="stat-icon">⚡</div>
-            <h3>3+</h3>
-            <p>Años de experiencia</p>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -60,84 +37,29 @@
 
 <style>
   .about-content {
-    max-width: 900px;
+    max-width: 780px;
     margin: 0 auto;
   }
 
   .about-text p {
-    font-size: 1.125rem;
+    font-size: 1.05rem;
     color: var(--text-gray);
     margin-bottom: 1.5rem;
-    text-align: center;
-    line-height: 1.8;
+    line-height: 1.85;
   }
 
-  .intro {
-    font-size: 1.25rem;
-    color: var(--text-light);
-  }
-
-  strong {
-    color: var(--primary);
-    font-weight: 700;
-  }
-
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-
-  .stat-item {
-    text-align: center;
-    padding: 2rem;
-    background: var(--bg-card);
-    border-radius: 1rem;
-    border: 1px solid rgba(0, 255, 65, 0.1);
-    transition: all 0.3s ease;
-  }
-
-  .stat-item:hover {
-    border-color: var(--primary);
-    box-shadow: var(--glow-green);
-    transform: translateY(-5px);
-  }
-
-  .stat-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    filter: drop-shadow(0 0 10px var(--primary));
-  }
-
-  .stat-item h3 {
-    font-size: 2.5rem;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.5rem;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .stat-item p {
-    color: var(--text-gray);
-    font-size: 1rem;
+  .about-text p:last-child {
     margin-bottom: 0;
   }
 
-  @media (max-width: 768px) {
-    .stats {
-      grid-template-columns: 1fr;
-    }
+  strong {
+    color: var(--text-light);
+    font-weight: 600;
+  }
 
+  @media (max-width: 768px) {
     .about-text p {
       font-size: 1rem;
-      text-align: left;
-    }
-
-    .intro {
-      font-size: 1.125rem;
     }
   }
 </style>

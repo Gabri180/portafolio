@@ -1,282 +1,155 @@
 ---
-import ProjectCard from './ProjectCard.astro';
-
-const pythonProjects = [
+const projects = [
   {
-    title: "Analizador de Sentimientos",
-    description: "Sistema de análisis de sentimientos en textos usando procesamiento de lenguaje natural.",
-    language: "Python",
-    tags: ["NLP", "Machine Learning", "NLTK"],
-    slug: "sentiment-analyzer"
+    title: "Negocio de Minecraft",
+    period: "2021 – 2023",
+    tags: ["Minecraft", "BuiltByBit", "Gestión de servidores"],
+    story: "Empezó como un hobby y terminó generando más de 3.000€. Vendí builds personalizados en BuiltByBit, gestioné servers para otros y llegué a tener una mini-tienda. No tenía ni idea de programar todavía — pero aprendí cómo funcionan los servidores, cómo gestionar comunidades y cómo cobrar online siendo menor de edad (con ayuda de mis padres).",
+    result: "+3.000€ en ventas",
+    color: "var(--primary)"
   },
   {
-    title: "Web Scraper Avanzado",
-    description: "Scraper multi-hilo para extraer información de sitios web.",
-    language: "Python",
-    tags: ["Web Scraping", "Threading", "BeautifulSoup"],
-    slug: "web-scraper"
+    title: "Home Lab con Proxmox",
+    period: "2024 – presente",
+    tags: ["Proxmox", "Kali Linux", "Ubuntu Server", "Virtualización"],
+    story: "Reciclé un PC viejo y lo convertí en un servidor doméstico con Proxmox. Corro varias VMs: una con Kali para practicar seguridad, otra con Ubuntu Server para experimentos varios. Lo monté todo solo siguiendo documentación oficial y muchos posts en foros. No soy ningún experto en seguridad, pero me aclaro bien.",
+    result: "En uso activo",
+    color: "var(--secondary)"
   },
   {
-    title: "API REST con FastAPI",
-    description: "API completa con autenticación JWT y base de datos SQLite.",
-    language: "Python",
-    tags: ["FastAPI", "JWT", "SQLite"],
-    slug: "fastapi-rest"
-  }
-];
-
-const javaProjects = [
-  {
-    title: "Sistema de Gestión de Biblioteca",
-    description: "Sistema completo para gestionar libros, usuarios y préstamos.",
-    language: "Java",
-    tags: ["OOP", "Collections", "File I/O"],
-    slug: "library-system"
+    title: "Este portfolio",
+    period: "2025",
+    tags: ["Astro", "JavaScript", "CSS", "GitHub Pages"],
+    story: "Lo hice mientras aprendía Astro. El diseño es mío. El primer borrador era bastante genérico — claramente generado con IA — así que lo reescribí para que parezca más real. Ahora mismo estás viendo la versión en la que intento que suene como yo y no como un CV de LinkedIn.",
+    result: "Lo estás viendo",
+    color: "var(--accent)"
   },
-  {
-    title: "Calculadora Científica",
-    description: "Calculadora con interfaz gráfica usando Swing.",
-    language: "Java",
-    tags: ["Swing", "GUI", "Math"],
-    slug: "calculator"
-  },
-  {
-    title: "Juego de Adivinar Número",
-    description: "Juego interactivo con niveles de dificultad.",
-    language: "Java",
-    tags: ["Game", "Random", "Scanner"],
-    slug: "guessing-game"
-  }
-];
-
-const jsProjects = [
-  {
-    title: "Todo App",
-    description: "Aplicación de tareas con almacenamiento local y filtros.",
-    language: "JavaScript",
-    tags: ["DOM", "LocalStorage", "ES6"],
-    slug: "todo-app"
-  },
-  {
-    title: "Weather App",
-    description: "Aplicación del clima que consume API pública.",
-    language: "JavaScript",
-    tags: ["API", "Fetch", "Async/Await"],
-    slug: "weather-app"
-  },
-  {
-    title: "Juego de Memoria",
-    description: "Juego de cartas de memoria con temporizador.",
-    language: "JavaScript",
-    tags: ["Game", "DOM", "Events"],
-    slug: "memory-game"
-  }
-];
-
-const htmlCssProjects = [
-  {
-    title: "Landing Page Moderna",
-    description: "Página responsive con animaciones CSS.",
-    language: "HTML/CSS",
-    tags: ["Responsive", "Animations", "Flexbox"],
-    slug: "landing-page"
-  },
-  {
-    title: "Galería con CSS Grid",
-    description: "Galería responsive con efectos hover.",
-    language: "HTML/CSS",
-    tags: ["CSS Grid", "Gallery", "Hover"],
-    slug: "css-gallery"
-  }
-];
-
-const reactProjects = [
-  {
-    title: "Dashboard Estadísticas",
-    description: "Dashboard interactivo con gráficos en tiempo real.",
-    language: "React",
-    tags: ["Hooks", "Context API", "Charts"],
-    slug: "dashboard"
-  },
-  {
-    title: "E-commerce Catalog",
-    description: "Catálogo de productos con carrito de compras.",
-    language: "React",
-    tags: ["Redux", "Shopping Cart", "State"],
-    slug: "ecommerce"
-  }
-];
-
-const nodejsProjects = [
-  {
-    title: "API RESTful",
-    description: "API completa con autenticación JWT y MongoDB.",
-    language: "Node.js",
-    tags: ["Express", "MongoDB", "JWT"],
-    slug: "express-api"
-  },
-  {
-    title: "Chat en Tiempo Real",
-    description: "Servidor de chat con Socket.IO.",
-    language: "Node.js",
-    tags: ["Socket.IO", "Real-time", "WebSocket"],
-    slug: "chat-server"
-  }
-];
-
-const cppProjects = [
-  {
-    title: "Gestión de Estudiantes",
-    description: "Sistema para gestionar estudiantes con archivos.",
-    language: "C++",
-    tags: ["OOP", "File I/O", "STL"],
-    slug: "student-manager"
-  },
-  {
-    title: "Cajero Automático",
-    description: "Sistema bancario con autenticación.",
-    language: "C++",
-    tags: ["Security", "File I/O", "OOP"],
-    slug: "atm-simulator"
-  }
-];
-
-const swiftProjects = [
-  {
-    title: "Todo List iOS",
-    description: "App de tareas con SwiftUI y persistencia.",
-    language: "Swift",
-    tags: ["SwiftUI", "UserDefaults", "MVVM"],
-    slug: "ios-todo"
-  },
-  {
-    title: "Convertidor Unidades",
-    description: "App para convertir diferentes unidades.",
-    language: "Swift",
-    tags: ["SwiftUI", "Measurement", "UI"],
-    slug: "unit-converter"
-  }
-];
-
-const astroProjects = [
-  {
-    title: "Blog con Markdown",
-    description: "Blog estático con soporte para Markdown.",
-    language: "Astro",
-    tags: ["Markdown", "Blog", "Static"],
-    slug: "markdown-blog"
-  }
 ];
 ---
 
 <section id="projects">
   <div class="container">
     <h2>Proyectos</h2>
-    
-    <div class="projects-section">
-      <h3 class="language-title">🐍 Python</h3>
-      <div class="projects-grid">
-        {pythonProjects.map(project => (
-          <ProjectCard {...project} />
-        ))}
-      </div>
-    </div>
-    
-    <div class="projects-section">
-      <h3 class="language-title">☕ Java</h3>
-      <div class="projects-grid">
-        {javaProjects.map(project => (
-          <ProjectCard {...project} />
-        ))}
-      </div>
-    </div>
-    
-    <div class="projects-section">
-      <h3 class="language-title">⚡ JavaScript</h3>
-      <div class="projects-grid">
-        {jsProjects.map(project => (
-          <ProjectCard {...project} />
-        ))}
-      </div>
-    </div>
-    
-    <div class="projects-section">
-      <h3 class="language-title">🎨 HTML/CSS</h3>
-      <div class="projects-grid">
-        {htmlCssProjects.map(project => (
-          <ProjectCard {...project} />
-        ))}
-      </div>
-    </div>
-    
-    <div class="projects-section">
-      <h3 class="language-title">🚀 Astro</h3>
-      <div class="projects-grid">
-        {astroProjects.map(project => (
-          <ProjectCard {...project} />
-        ))}
-      </div>
-    </div>
-    
-    <div class="projects-section">
-      <h3 class="language-title">⚛️ React</h3>
-      <div class="projects-grid">
-        {reactProjects.map(project => (
-          <ProjectCard {...project} />
-        ))}
-      </div>
-    </div>
-    
-    <div class="projects-section">
-      <h3 class="language-title">💚 Node.js</h3>
-      <div class="projects-grid">
-        {nodejsProjects.map(project => (
-          <ProjectCard {...project} />
-        ))}
-      </div>
-    </div>
-    
-    <div class="projects-section">
-      <h3 class="language-title">⚙️ C++</h3>
-      <div class="projects-grid">
-        {cppProjects.map(project => (
-          <ProjectCard {...project} />
-        ))}
-      </div>
-    </div>
-    
-    <div class="projects-section">
-      <h3 class="language-title">🍎 Swift</h3>
-      <div class="projects-grid">
-        {swiftProjects.map(project => (
-          <ProjectCard {...project} />
-        ))}
-      </div>
+    <p class="section-sub">Solo pongo los que realmente he hecho. Prefiero tres proyectos reales que veinte de relleno.</p>
+
+    <div class="projects-list">
+      {projects.map((project) => (
+        <div class="project-card">
+          <div class="project-header">
+            <div>
+              <h3>{project.title}</h3>
+              <span class="period">{project.period}</span>
+            </div>
+            <span class="result" style={`color: ${project.color}; border-color: ${project.color}`}>
+              {project.result}
+            </span>
+          </div>
+
+          <p class="story">{project.story}</p>
+
+          <div class="tags">
+            {project.tags.map(tag => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 </section>
 
 <style>
-  .projects-section {
-    margin-bottom: 4rem;
+  .section-sub {
+    text-align: center;
+    color: var(--text-gray);
+    font-size: 1rem;
+    margin-top: -2rem;
+    margin-bottom: 3rem;
   }
 
-  .language-title {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: var(--text-light);
-    text-align: left;
-  }
-
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  .projects-list {
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
+    max-width: 850px;
+    margin: 0 auto;
+  }
+
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(0, 255, 65, 0.1);
+    border-radius: 1rem;
+    padding: 2rem 2.5rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .project-card:hover {
+    border-color: rgba(0, 255, 65, 0.3);
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .project-card h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-light);
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 0.25rem;
+  }
+
+  .period {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .result {
+    font-size: 0.85rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    border: 1px solid;
+    padding: 0.35rem 0.85rem;
+    border-radius: 50px;
+    white-space: nowrap;
+  }
+
+  .story {
+    color: var(--text-gray);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .tag {
+    font-size: 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0.3rem 0.75rem;
+    border-radius: 0.35rem;
   }
 
   @media (max-width: 768px) {
-    .projects-grid {
-      grid-template-columns: 1fr;
+    .project-card {
+      padding: 1.5rem;
+    }
+
+    .project-header {
+      flex-direction: column;
     }
   }
 </style>

@@ -1,43 +1,54 @@
 ---
-const languages = [
-  // Lenguajes principales
-  { name: 'Python', level: 95, icon: '🐍', color: '#4ecdc4' },
-  { name: 'Swift', level: 90, icon: '🍎', color: '#ff6b35' },
-  { name: 'JavaScript', level: 85, icon: '⚡', color: '#ffe66d' },
-  { name: 'Java', level: 85, icon: '☕', color: '#a8dadc' },
-  { name: 'C++', level: 80, icon: '⚙️', color: '#f1faee' },
-  { name: 'TypeScript', level: 70, icon: '📘', color: '#0a84ff' },
-  
-  // Frontend
-  { name: 'HTML/CSS', level: 90, icon: '🎨', color: '#ff006e' },
-  { name: 'React', level: 80, icon: '⚛️', color: '#00b4d8' },
-  { name: 'Astro', level: 75, icon: '🚀', color: '#a855f7' },
-  
-  // Backend & Bases de datos
-  { name: 'Node.js', level: 75, icon: '💚', color: '#06ffa5' },
-  { name: 'MongoDB', level: 70, icon: '🍃', color: '#00ff41' },
-  { name: 'SQL', level: 70, icon: '🗄️', color: '#cdb4db' },
-  
-  // DevOps & Herramientas
-  { name: 'Git', level: 85, icon: '📦', color: '#ff0a78' },
-  { name: 'Linux', level: 80, icon: '🐧', color: '#ffe66d' },
-  { name: 'Bash', level: 75, icon: '🐚', color: '#90e0ef' },
-  { name: 'Docker', level: 65, icon: '🐳', color: '#00b4d8' },
+const techs = [
+  {
+    name: "Python",
+    desc: "Scripts de automatización, algo de web scraping y experimentos con herramientas de seguridad. Es el lenguaje en el que tengo más soltura."
+  },
+  {
+    name: "Swift / SwiftUI",
+    desc: "Llevo más de un año aprendiendo a hacer apps para iOS. He montado algunas apps pequeñas; todavía me cuesta la parte de arquitectura y el manejo de estado complejo."
+  },
+  {
+    name: "JavaScript",
+    desc: "Para web, tanto frontend como algo de Node.js. Este portfolio usa Astro con JS. No domino frameworks grandes como Next al 100%, pero me apaño."
+  },
+  {
+    name: "HTML / CSS",
+    desc: "Lo básico, y bastante. Sé hacer layouts decentes, animaciones CSS y diseño responsive sin tener que buscar en Stack Overflow cada dos líneas."
+  },
+  {
+    name: "Linux / Bash",
+    desc: "Kali en una VM, Ubuntu en el servidor. Me muevo bien por terminal y escribo scripts de bash cuando me hace falta. No uso Windows para casi nada técnico."
+  },
+  {
+    name: "Proxmox",
+    desc: "Tengo un servidor en casa con Proxmox corriendo varias VMs. Lo monté solo siguiendo documentación. Si algo falla, lo arreglo yo también."
+  },
+  {
+    name: "Git",
+    desc: "Lo uso a diario. Commits, branches, pull requests en GitHub. Nada de workflows complicados de empresa, pero los fundamentos bien asentados."
+  },
+  {
+    name: "Java / C++",
+    desc: "Los he tocado en proyectos pequeños. No los elegiría para un proyecto serio todavía, pero me entiendo con ellos cuando hace falta."
+  },
+  {
+    name: "Docker",
+    desc: "Lo básico: containers, imágenes, docker-compose para levantar servicios. Me falta profundidad, lo admito."
+  },
 ];
 ---
 
 <section id="technologies">
   <div class="container">
-    <h2>🛠️ Tecnologías</h2>
+    <h2>Lo que manejo</h2>
+    <p class="section-sub">Sin barras de porcentaje. Esas no significan nada.</p>
+
     <div class="tech-grid">
-      {languages.map((lang) => (
-        <div class="tech-card">
-          <div class="tech-icon">{lang.icon}</div>
-          <h3>{lang.name}</h3>
-          <div class="progress-container">
-            <div class="progress-bar" style={`width: ${lang.level}%; background: ${lang.color}`}></div>
-          </div>
-          <span class="percentage">{lang.level}%</span>
+      {techs.map((tech) => (
+        <div class="tech-item">
+          <h3>{tech.name}</h3>
+          <p>{tech.desc}</p>
         </div>
       ))}
     </div>
@@ -45,67 +56,53 @@ const languages = [
 </section>
 
 <style>
+  .section-sub {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    font-family: 'JetBrains Mono', monospace;
+    margin-top: -2rem;
+    margin-bottom: 3rem;
+  }
+
   .tech-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
-  .tech-card {
+  .tech-item {
     background: var(--bg-card);
-    border: 1px solid rgba(0, 255, 65, 0.1);
-    border-radius: 1rem;
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 255, 65, 0.08);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: border-color 0.3s ease;
   }
 
-  .tech-card:hover {
-    border-color: var(--primary);
-    box-shadow: var(--glow-green);
-    transform: translateY(-5px);
+  .tech-item:hover {
+    border-color: rgba(0, 255, 65, 0.25);
   }
 
-  .tech-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    filter: drop-shadow(0 0 10px var(--primary));
-  }
-
-  .tech-card h3 {
-    color: var(--text-light);
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .progress-container {
-    width: 100%;
-    height: 8px;
-    background: var(--bg-elevated);
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 0.5rem;
-  }
-
-  .progress-bar {
-    height: 100%;
-    border-radius: 10px;
-    transition: width 1s ease;
-    box-shadow: 0 0 10px currentColor;
-  }
-
-  .percentage {
-    color: var(--primary);
-    font-weight: 700;
+  .tech-item h3 {
     font-size: 1rem;
+    font-weight: 700;
     font-family: 'JetBrains Mono', monospace;
+    color: var(--primary);
+    margin-bottom: 0.6rem;
+  }
+
+  .tech-item p {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    line-height: 1.7;
+    margin: 0;
   }
 
   @media (max-width: 768px) {
     .tech-grid {
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: 1fr;
     }
   }
 </style>
